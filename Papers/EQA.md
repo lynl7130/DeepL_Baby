@@ -1,5 +1,5 @@
 
-##[Project](https://embodiedqa.org/)
+## [Project](https://embodiedqa.org/)
 
 # Summary
 ### Problem definition:   
