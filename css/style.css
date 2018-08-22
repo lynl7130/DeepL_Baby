@@ -9,6 +9,7 @@ body{
 /* Global */
 .container{
   width:80%;
+  height:auto;
   margin:auto;
   overflow:hidden;
 }
