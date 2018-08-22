@@ -76,7 +76,7 @@ header a:hover{
 
 /*showcase*/
 #showcase{
-  /*min-height:400px;*/
+  min-height:400px;
   /* background:url('') no-repeat 0 -400px */
   text-align:center;
   /*color:#ffffff;*/
