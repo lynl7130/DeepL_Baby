@@ -3,7 +3,6 @@ body{
   padding:0;
   margin:0;
   background-color:#f4f4f4;
-  height:100%;
 }
 
 /* Global */
@@ -11,9 +10,6 @@ body{
   width:80%;
   margin:auto;
   overflow:hidden;
-  min-height:100%;
-  height:auto;
-  height:100%;
 }
 
 ul{
@@ -95,32 +91,24 @@ header a:hover{
   font-size:20px;
 }
 
-#showcase .highlight{
-  font-weight:bold;
-}
-
 /*
 #newsletter{
   padding:15px;
   color:#ffffff;
   background:#35424a
 }
-
 #newsletter h1{
   float:left;
 }
-
 #newsletter form {
   float:right;
   marigin-top:15px;
 }
-
 #newsletter input[type="email"]{
   padding:4px;
   height:25px;
   width:250px;
 }
-
 */
 
 
@@ -128,14 +116,12 @@ header a:hover{
 #boxes{
   margin-top:20px;
 }
-
 #boxes .box{
   float:left;
   test-align:center;
   width:30%;
   padding:10px;
 }
-
 #boxes .box img{
   width:50px;
 }
@@ -147,5 +133,4 @@ footer{
   color:#ffffff;
   background-color:#e8491d;
   text-align:center;
-  bottom:0;
 }
