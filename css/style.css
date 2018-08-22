@@ -91,6 +91,10 @@ header a:hover{
   font-size:20px;
 }
 
+#showcase .highlight{
+  font-weight:bold;
+}
+
 /*
 #newsletter{
   padding:15px;
