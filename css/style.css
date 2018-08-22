@@ -115,7 +115,8 @@ header a:hover{
 
 */
 
-/* Boxes */
+
+/* Boxes
 #boxes{
   margin-top:20px;
 }
@@ -125,4 +126,17 @@ header a:hover{
   test-align:center;
   width:30%;
   padding:10px;
+}
+
+#boxes .box img{
+  width:50px;
+}
+*/
+
+footer{
+  padding:20px;
+  margin-top:20px;
+  color:#ffffff;
+  background-color:#e8491d;
+  test-align:center;
 }
