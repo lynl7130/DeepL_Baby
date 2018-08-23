@@ -28,7 +28,8 @@ Labels predict(model, test_images)
 Example Dataset: CIFAR10  
 * What does similar mean?  
    **Distance Metric** to compare images:  
-   1. L1 distance: ![](https://latex.codecogs.com/gif.latex?d_1%28I_1%2C%20I_2%29%20%3D%20%5Csum_p%20%7C%7BI_1%5Ep-I_2%5Ep%7D%7C)  
+   1. L1 distance:  
+   ![](https://latex.codecogs.com/gif.latex?d_1%28I_1%2C%20I_2%29%20%3D%20%5Csum_p%20%7C%7BI_1%5Ep-I_2%5Ep%7D%7C)  
    2.  
 * How fast are training and prediction?  
   Train: O(1), predict: O(N).  
