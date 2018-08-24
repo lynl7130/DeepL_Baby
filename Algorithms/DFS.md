@@ -1,5 +1,5 @@
 
-# Depth-First Search(DFS), Topological Sort
+# Depth-First Search(DFS)
 
 adjacency lists:  
 ![](https://latex.codecogs.com/gif.latex?Adj%5Bu%5D%20%3D%20%5Cleft%20%5C%7B%20v%5Cin%20V%20%7C%20%28u%2Cv%29%20%5Cin%20E%5Cright%20%5C%7D)     
@@ -30,5 +30,5 @@ def DFS(V, Adj):
 **Analysis**: O(V+E)(linear time)  
 * visit each vertex once in DFS alone: O(V)  
 * DFS-Visit(V, Adj, v) called once per vertex v  
-=> ![](https://latex.codecogs.com/gif.latex?O%28%5Csum_%7Bv%5Cin%20V%7D%7CAdj%5Bv%5D%7C%20%29%20%3D%20O%28E%29).  
+![](https://latex.codecogs.com/gif.latex?O%28%5Csum_%7Bv%5Cin%20V%7D%7CAdj%5Bv%5D%7C%20%29%20%3D%20O%28E%29).  
 
