@@ -42,6 +42,7 @@ backprop and learn the alpha!
 * Negative saturation regime compared with Leaky ReLU adds some robustness to noise.  
 **problem:** Computation requires exp().  
 #### Maxout "Neuron"
+![](https://latex.codecogs.com/gif.latex?max%28w_1%5ETx%20&plus;%20b_1%2C%20w_2%5ETx&plus;%20b_2%29)  
 * Does not have the basic form of dot product -> nonlinearity
 * Generalizes ReLU and Leaky ReLU
 * Linear Regime! Does not saturate! Does not die!  
