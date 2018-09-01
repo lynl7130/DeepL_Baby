@@ -89,8 +89,53 @@ i.e. If there's a layer with few neurons, want the weight to be bigger to transp
 **Problem:** When using ReLU nonlinearity it breaks, because ReLU approximately kill half of the neurons => weights too small.  
 **Solution**: ```W = np.random.randn(fan_in, fan_out) / np.sqrt(fan_in/2)```  
 
-### Batch Normalization
+### Batch Normalization: make unit gaussian activations
+consider a batch of activations at some layer. To make each dimension unit gaussian:  
+![](https://latex.codecogs.com/gif.latex?%5Cwidehat%7Bx%7D%5E%7B%28k%29%7D%20%3D%20%5Cfrac%7Bx%5E%7B%28k%29%7D-E%5Bx%5E%7B%28k%29%7D%5D%7D%7B%5Csqrt%7BVar%5Bx%5E%7B%28k%29%7D%5D%7D%7D)  
+![](https://latex.codecogs.com/gif.latex?E%5Bx%5E%7B%28k%29%7D%5D): mean of the current batch.  
+![](https://latex.codecogs.com/gif.latex?%5Csqrt%7BVar%5Bx%5E%7B%28k%29%7D%5D%7D): standard deviation of the current batch. 
+**Steps:**  
+1. compute the empirical mean and variance independently for each dimension.  
+2. Normalize(apply the formula).  
+  
+**Where?**  
+Usually inserted after Fully Connected or Convolutional layers, and before nonlinearity.  
+* for Convolutional layers, normalize not just across the training examples, but also across feature dimension and spatial locations.  
+  
+**Problem:** do we necessarily want a unit gaussian input to a tanh layer?  
+**Solution:** After the normalization, allow the network to squash the range if it wants to:  
+![](https://latex.codecogs.com/gif.latex?y%5E%7B%28k%29%7D%20%3D%20%5Cgamma%5E%7B%28k%29%7D%5Cwidehat%7Bx%7D%5E%7B%28k%29%7D&plus;%5Cbeta%5E%7B%28k%29%7D)  
+* The network could learn to recover the identity mapping:  
+![](https://latex.codecogs.com/gif.latex?%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20%5Cgamma%5E%7B%28k%29%7D%3D%5Csqrt%7BVar%5Bx%5E%7B%28k%29%7D%5D%7D%5C%5C%20%5Cbeta%5E%7B%28k%29%7D%3DE%5Bx%5E%7B%28k%29%7D%5D%20%5Cend%7Bmatrix%7D%5Cright.)  
+  
+**BN's benefits:**  
+  1. Improves gradient flow through the network.  
+  2. Allows higher learning rates.  
+  3. Reduces the strong dependence on initialization.
+  4. Acts as a form of regularization in a funny way(using experience from other data in that minibatch), and slightly reduces the need for dropout, maybe
+  
+**At test time BN layer functions differently!**
+Test time: Then mean/std are computed based on the batch(e.g. can be estimated during traning with running averages)
+
 ### Babysitting the Learning Process
+#### Step 1: PreProcess the data.  
+#### Step 2: Choose the architecture.  
+#### Step 3: Double check(sanity) that the loss is reasonable:  
+1. Do a forward pass, **disable regularization**, make sure the implemenation is right  
+2. Do a forward pass, **crank up regularization**, want to see the loss goes up  
+#### Step 4: Let's try to train now...  
+Make sure that you can overfit very small portion of the training data!  
+1. take a very small portion of data.  
+2. turns off regularization.  
+3. train and see the loss, want to see to loss drop down to zero.  
+#### Step 5: Let's really try to train:
+Start with small regularization and find learning rate that makes the loss go down.  
+* loss barely changes => learning rate is too low.  
+* loss exploding => learning rate is too high.  
+  
+**rough learning rate range:** ```(0.00001, 0.001)```
+
+
 ### Hyperparameter Optimization
 
 ## Training dynamics
