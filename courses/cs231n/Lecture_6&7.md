@@ -137,6 +137,46 @@ Start with small regularization and find learning rate that makes the loss go do
 
 
 ### Hyperparameter Optimization
+#### Cross-validation strategy
+**coarse -> fine** cross-validation in stages  
+1. **First stage**: only a few epochs to get rough idea of what params work  
+* it's best to optimize in log space, e.g. ```lr = 10 ** uniform(-3, 6) ```, because the learning rate is multiplying gradient update, so it has these multiplicative effects, so it makes more sense than ```lr = uniform(10^-6, 10^-3)```.  
+  
+2. **Second stage**: longer running time, finer search  
+* Make sure you've fully explored your range!  
+  
+3. **...(repeat as necessary)**  
+  
+* Tip for detecting explosions in the solver:  
+If the cost is ever > 3 * original cost, break out early.   
+
+#### Sample all of hyperparameters: Random Search vs. Grid Search
+* Random Search is better:  
+Easier to observe the shape of hyperparameter groups: where the good values are.  
+  
+#### Hyperparameters to play with:
+* network architecture  
+* learning rate, its decay schedule, update type  
+* regularization(L2/Dropout strength)
+
+#### Monitor and visualize the loss curve:
+* loss exploding => very high learning rate
+* loss going down slowly => low learning rate
+* loss going down quickly but reach a plateau => high learning rate
+* loss going down quickly => good learning rate
+
+#### Why loss flat for a while then start training at a sudden?
+* a prime suspect: bad initialization
+
+#### Monitor and visualize the accuracy:
+compare: training accuracy <=> validation accuracy  
+* big gap = overfitting => increase regularization strength?  
+* no gap => increase model capacity? Because has not overfitted yet, could increase more.  
+
+#### Track the ratio of weight updates/weight magnitudes:
+ratio between the udpates and values: ~ 0.0002 / 0.02 = 0.01 (about okay)  
+**want this to be somewhere around 0.001 or so**
+
 
 ## Training dynamics
 
