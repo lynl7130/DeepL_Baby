@@ -48,13 +48,24 @@ backprop and learn the alpha!
 * Linear Regime! Does not saturate! Does not die!  
 **problem:** doubles the number of parameters/neuron.  
   
-### TLDR: In practice:
+#### TLDR: In practice:
 * Use ReLU. Be careful with your learning rates
 * Try out Leaky ReLU/Maxout/ELU
 * Try out tanh but don't expect too much
 * Don't use sigmoid
 
 ### Data Preprocessing
+Step 1: preprocess the data.  
+original -> zero-centered.  
+More complicated methods: normalize? PCA? Whitening? => too complicated for image!
+  
+#### TLDR: In practice for Images: center only
+e.g. consider CIFAR-10 example with (32,32,3) images  
+* Subtract the mean image(e.g. AlexNet), a (32,32,3) array
+* Subtract per-channel mean(e.g. VGGNet), mean along each channel = 3 numbers.  
+**Mean does not come from single batches! Want the experience from entire training dataset.**  
+
+
 ### Weight Initialization
 ### Batch Normalization
 ### Babysitting the Learning Process
