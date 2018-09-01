@@ -67,6 +67,27 @@ e.g. consider CIFAR-10 example with (32,32,3) images
 
 
 ### Weight Initialization
+Q: What if W=0 is used? A: all neurons will do the same thing(same gradient, same output...).
+#### Small random numbers
+(gaussian with zero-mean and 0.01 standard deviation)  
+```W = 0.01 * np.random.randn(fan_in, fan_out)```  
+**Problem:**  
+Works fine for small networks, but **bad for deeper networks**:  
+Later activations become zero => **gradients too small** to update.  
+#### Large random numbers
+(gaussian with zero-mean and 1 standard deviation)    
+```W = 1 * np.random.randn(fan_in, fan_out)```   
+**Problem:**  
+Almost all neurons completely saturated, either -1 and 1. => **Gradients wil be all zero.**  
+#### Xavier initialization: reasonable!
+standard deviation too small => collapse, too big => saturate.  
+```W = np.random.randn(fan_in, fan_out) / np.sqrt(fan_in)```  
+point: want the variance of the input to be the same as the variance of the output.  
+i.e. If there's a layer with few neurons, want the weight to be bigger to transport enough output to next layer.  
+Assumption: linear activation, e.g. in the active region of tanh.  
+**Problem:** When using ReLU nonlinearity it breaks, because ReLU approximately kill half of the neurons => weights too small.  
+Solve the problem: ```W = np.random.randn(fan_in, fan_out) / np.sqrt(fan_in/2)```  
+
 ### Batch Normalization
 ### Babysitting the Learning Process
 ### Hyperparameter Optimization
