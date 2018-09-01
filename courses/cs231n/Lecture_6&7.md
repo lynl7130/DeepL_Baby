@@ -82,11 +82,12 @@ Almost all neurons completely saturated, either -1 and 1. => **Gradients wil be 
 #### Xavier initialization: reasonable!
 standard deviation too small => collapse, too big => saturate.  
 ```W = np.random.randn(fan_in, fan_out) / np.sqrt(fan_in)```  
-point: want the variance of the input to be the same as the variance of the output.  
+**Point**: want the variance of the input to be the same as the variance of the output.  
 i.e. If there's a layer with few neurons, want the weight to be bigger to transport enough output to next layer.  
-Assumption: linear activation, e.g. in the active region of tanh.  
+  
+**Assumption**: linear activation, e.g. in the active region of tanh.  
 **Problem:** When using ReLU nonlinearity it breaks, because ReLU approximately kill half of the neurons => weights too small.  
-Solve the problem: ```W = np.random.randn(fan_in, fan_out) / np.sqrt(fan_in/2)```  
+**Solution**: ```W = np.random.randn(fan_in, fan_out) / np.sqrt(fan_in/2)```  
 
 ### Batch Normalization
 ### Babysitting the Learning Process
