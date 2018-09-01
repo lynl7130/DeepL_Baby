@@ -117,6 +117,10 @@ Usually inserted after Fully Connected or Convolutional layers, and before nonli
 **At test time BN layer functions differently!**
 Test time: Then mean/std are computed based on the batch(e.g. can be estimated during traning with running averages)
 
+
+
+## Training dynamics
+
 ### Babysitting the Learning Process
 #### Step 1: PreProcess the data.  
 #### Step 2: Choose the architecture.  
@@ -159,6 +163,10 @@ Easier to observe the shape of hyperparameter groups: where the good values are.
 * learning rate, its decay schedule, update type  
 * regularization(L2/Dropout strength)
 
+## Evaluation
+
+### model ensembles
+
 #### Monitor and visualize the loss curve:
 * loss exploding => very high learning rate
 * loss going down slowly => low learning rate
@@ -176,8 +184,3 @@ compare: training accuracy <=> validation accuracy
 #### Track the ratio of weight updates/weight magnitudes:
 ratio between the udpates and values: ~ 0.0002 / 0.02 = 0.01 (about okay)  
 **want this to be somewhere around 0.001 or so**
-
-
-## Training dynamics
-
-## Evaluation
