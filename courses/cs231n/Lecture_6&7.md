@@ -58,6 +58,9 @@ backprop and learn the alpha!
 Step 1: preprocess the data.  
 original -> zero-centered.  
 More complicated methods: normalize? PCA? Whitening? => too complicated for image!
+**Why need normalization?**  
+Before: classification loss very sensitive to changes in weight, hard to optimize.  
+After: less sensitive to small changes in weights, easier to optimize.  
   
 #### TLDR: In practice for Images: center only
 e.g. consider CIFAR-10 example with (32,32,3) images  
