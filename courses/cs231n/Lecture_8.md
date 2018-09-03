@@ -7,6 +7,7 @@
 * fewer cores, but each core is much faster and much more capable.   
 * great at sequential tasks.  
 * cache is relative small, using system RAMs(12/16/32G).  
+  
 **GPU**:  
 * more cores, but each core is much slower and "dumber".  
 * great for parallel tasks.  
