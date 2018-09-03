@@ -52,7 +52,7 @@ velocity correction factor. Help alleviate overshooting.
 grad_squared = 0
 while True:
   dx = compute_gradient(x)
-  grad_square += dx * dx #Added element-wise scaling of the gradient based on the historical sum of squares in each dimension
+  grad_squared += dx * dx #Added element-wise scaling of the gradient based on the historical sum of squares in each dimension
   x -= learning_rate * dx / (np.sqrt(grad_squared) + 1e-7)
 ```
 * What if high condition number?  
@@ -63,8 +63,33 @@ over long time, the step size is getting smaller and smaller.
 2. Bad in non-convex case: might get stuck at saddle point.  
   
 #### RMSProp: solving Adagrad's problem
+Momemtum over the squared gradients, rather than momentum over the gradient.  
+```
+grad_squared = 0
+while True:
+  dx = compute_gradient(x)
+  grad_squared += decay_rate * grad_squared + (1 - decay_rate) * dx * dx
+  x -= learning_rate * dx / (np.sqrt(grad_squared) + 1e-7)
+```
 
+#### SGD vs. SGD+Momentum vs. Adagrad vs. RMSProp
+* Both SGD+Momentum and RMSProp work better than SGD.  
+* SGD+Momentum tends to overshoot the miminum and comes back.  
+* RMSProp adjusts its direction such that it has equal speed at each dimension.  
+* Adagrad looks kind of RMSProp, but tends to stuck.  
 
+### Adam
+  
+#### combining Momentum & AdaGrad/RMSProp: Almost there!
+```
+first_moment = 0
+second_moment = 0
+while True:
+  dx = compute_gradient(x)
+  first_moment = beta1 * first_moment + (1 - beta1) * dx   #Momentum
+  second_moment = beta2 * second_moment + (1 -beta2) * dx * dx  #AdaGrad/RMSProp  
+  x -= learning_rate * first_moment / (np.sqrt(second_moment) + 1e-7))
+```
 ## Regularization
   
 ## Transfer Learning
