@@ -279,7 +279,6 @@ train more fc layers.
 
 ### When and how?
 ```
--------------------------------------------------------------------------
                   |    very similar dataset  |  very different dataset
 -------------------------------------------------------------------------
 very little data  |   Use Linear Classifier  |   Try linear classifier 
@@ -290,14 +289,14 @@ quite a lot data  |   Finetune a few layers  |  Finetune a larger number
 -------------------------------------------------------------------------
 top: more specific
 bottom: more generic
-
 ```
 ### Transfer learning with CNNs is pervasive!  
 It's the norm, not an exception.  
-Don't start from scratch! start from one pretrained on ImageNet!  
+Don't start from scratch! start from pretrained ones!  
   
 ### Takeaway for your projects and beyond:  
 Have some dataset of interest but it has < ~1M images?  
 1. Find a very large dataset that has similar data, train a big ConvNet there.  
 2. Transfer learn to your dataset.  
+  
 * Deep learning frameworks provide a "Model Zoo" of pretrained models so you don't need to train your own.  
