@@ -40,11 +40,11 @@ complex sentence's information -- better --> a scene graph of objects and their 
     * a graph convolution network which passes information along graph edges
   
 2. bridge the symbolic graph-structured input and the two-dimensional image output.  
-  * a scene layout <- predicting bounding boxes and segmentation masks for all objects in the graph.  
-  * an image <- scene layout by a CRN(cascaded refinement network)
+    * a scene layout <- predicting bounding boxes and segmentation masks for all objects in the graph.  
+    * an image <- scene layout by a CRN(cascaded refinement network)
   
 3. ensure that the generated images are realistic and contain recognizable objects.  
-  * train adversarially against a pair of discriminator networks operating on image patches and generated objects.  
+    * train adversarially against a pair of discriminator networks operating on image patches and generated objects.  
 
 **All components of the model are learned jointly in an end-to-end manner!**
 
