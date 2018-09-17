@@ -48,4 +48,7 @@ complex sentence's information -- better --> a scene graph of objects and their 
 
 **All components of the model are learned jointly in an end-to-end manner!**
 
-##   
+##  Experiments
+Visual Genome: human annotated scene graphs.   
+COCO-Stuff.  
+User Studies.  
