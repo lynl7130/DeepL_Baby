@@ -52,3 +52,9 @@ complex sentence's information -- better --> a scene graph of objects and their 
 Visual Genome: human annotated scene graphs.   
 COCO-Stuff.  
 User Studies.  
+
+# Related Work
+## Generative Image Models
+## Conditional Image Synthesis
+## Scene Graphs
+## Deep Learning on Graphs
