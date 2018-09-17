@@ -53,8 +53,25 @@ Visual Genome: human annotated scene graphs.
 COCO-Stuff.  
 User Studies.  
 
-# Related Work
+## Method
+image generation network f: scene graphs -> images.  
+![](https://latex.codecogs.com/gif.latex?%5Cwidehat%7BI%7D%3Df%28G%2Cz%29)  
+G - scene graph, z - noise.  
+  
+graph convolution network: G -> embedding vectors for each object.    
+
+# Related Work(under Construction)
 ## Generative Image Models
+three categories:  
+1. GANs jointly learn a generator for synthesizing images and a discriminator classifying images as real or fake.  
+2. Variational Autoencoders use variational inference to jointly learn an encoder and decoder mapping between images and latent codes.  
+3. autoregressive approaches model likelihoods by conditioning each pixel on all previous pixels.  
+  
 ## Conditional Image Synthesis
+Conditional Image Synthesis conditions generation on additional input.  
+GANs can be conditioned on category labels by:  
+1. providing labels as an additional input to both generator and discriminator
+2. forcing the discriminator to predict the label.**(We are using this one)**  
+
 ## Scene Graphs
 ## Deep Learning on Graphs
