@@ -37,7 +37,7 @@ complex sentence's information -- better --> a scene graph of objects and their 
 
 ## challenges
 1. develop a method for processing scene graph inputs.  
-  * a graph convolution network which passes information along graph edges
+    * a graph convolution network which passes information along graph edges
   
 2. bridge the symbolic graph-structured input and the two-dimensional image output.  
   * a scene layout <- predicting bounding boxes and segmentation masks for all objects in the graph.  
