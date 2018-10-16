@@ -87,10 +87,21 @@ Actions fail if pre-conditions are not met.
 
 ### Object Visibility
 **object visible** = in camera view + within a threshold of distance(default: 1 meter) from camera to the closest point of the object.  
-**object visibility != visibility in the image**.  
+* object visibility != visibility in the image.
 
 ## Architecture
-Two components:  
+[The overall architecture](https://arxiv.org/pdf/1712.05474.pdf#page=3)
+### Two components:  
 * A set of scenes built within the Unity Game engine.  
 * a lightweight Python API that interacts with the game engine.  
 
+### Procedure
+Action executed in Unity: screen capture + Json metadata -> Python Flask service.  
+Received -> an Event Object(a numpy array:screen capture + a dictionary: current states).  
+Unity wait for a controller.step() from the Python service.  
+
+## Usage
+target-driven navigation using DeepRL(fine-tuning in real world)   
+visual semantic planning using deep successor representations(generalized)  
+a GAN for generating occluded regions of objects  
+interactive visual question answering  
