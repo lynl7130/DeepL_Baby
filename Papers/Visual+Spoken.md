@@ -32,10 +32,28 @@ Jointly learn spoken language and visual perception given raw speech audio and i
 ### Solution
 Models capable of jointly discovering words in raw speech audio, objects in raw images, and associating them with one another.
 
-### What has been done?
-1. written text <-> vision!  
+### What has been done: written text <-> vision!  
 written text: has been segemented and clustered.  
 **Two problems to solve in this paper:**  
 1. segmenting and clustering the raw speech signal into discrete words
 2. visual object discovery in images
 
+### What has been done: sounds <-> vision!
+**Problems in this work:**  
+* portions of the speech signal that refers to objects are shorter.
+* number of categories is much larger.  
+
+### premise of this paper
+* NN: image+audio->highlight the relevant regions of the image as described in speech
+* no speech recognition/transcription, no conventional object detection/recognition
+* perform semantic retrieval at the whole-image and whole-caption level
+* detection and localization of both visual objects and spoken words emerges as a by-product of this training
+
+## Prior Work
+### Visual Object Recognition and Discovery
+* bounding box annotation in training data
+* weakly-supervised or unsupervised visual object localization
+* unsupervised visual object discovery
+### Unsupervised Speech Processing
+### Fusion of Vision and Language
+### Fusion of Vision and Sounds
