@@ -33,9 +33,9 @@ Jointly learn spoken language and visual perception given raw speech audio and i
 Models capable of jointly discovering words in raw speech audio, objects in raw images, and associating them with one another.
 
 ### What has been done?
-1. written text <-> vision!
-written text: has been segemented and clustered.
-**Two problems to solve in this paper:** 
+1. written text <-> vision!  
+written text: has been segemented and clustered.  
+**Two problems to solve in this paper:**  
 1. segmenting and clustering the raw speech signal into discrete words
 2. visual object discovery in images
 
