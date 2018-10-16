@@ -79,6 +79,10 @@ Rising: learn directly from the speech signal:
 * proved that linguistic units approximating phonemes and words can be implicitly learned by models
 * **This paper introduces "matchmap" NNs: get semantic alignments between acoustic frames and image pixels**
 
+### Fusion of Vision and Sounds
+Some focused on integrating other acoustic signals.  
+**This paper concentrates on speech and word discovery.**  
+Combining speech and ambient sounds -> opportunities!
+
 
 ## Spoken Captions Dataset
-### Fusion of Vision and Sounds
