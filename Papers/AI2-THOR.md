@@ -30,3 +30,54 @@ learning from still images/videos -> human-like learning.
   
 ### Why AI2-THOR?
 a scalable, fast and cheap proxy for real world experiments in different types of scenarios.  
+
+## Related Platforms
+[a summary table](https://arxiv.org/pdf/1712.05474.pdf#page=3)
+### Game environments: 
+not photo-realistic / expose the full environment to the agent!  
+* ATARI Learning Environment
+* ViZDoom
+* TorchCraft
+* ELF
+* DeepMind Lab
+* OpenAI Universe
+
+### non-photo-realistic simulated environments
+* UETorch
+* Project Malmo
+* SceneNet
+
+### for autonomous driving
+* SYNTHIA
+* Virtual KITTI
+* TORCS
+* CARLA
+
+### other synthetic indoor environments
+suitable for navigation due to lack of actionable objects and an interaction API.  
+* HoME
+* House3D
+* MINOS
+* SceneNet RGBD  
+**Furthermore, AI2-ThOR is integrated with a physics engine!**
+
+## Concepts
+### Scene
+a virtual room that an agent can navigate in and interact with.  
+
+### Agent
+* radius: 0.2m, height: 1.8m
+* cannot pass through physical objects.
+
+### Action
+Actions fail if pre-conditions are not met.
+
+### Object
+Categories:  
+* static or movable.  
+* interactable or non-interactable.  
+
+
+
+
+
