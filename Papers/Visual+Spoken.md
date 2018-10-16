@@ -13,7 +13,7 @@ learning the semantic correspondences between speech frames and image pixels.
 * speech-prompted object localization
 * audio-visual clustering
 * concept discovery
-* real-time, speech-drivenm semantic highlighting
+* real-time, speech-driven semantic highlighting
 
 ### Dataset
 * extended version of the Places audio caption dataset(doubling)
@@ -54,6 +54,31 @@ written text: has been segemented and clustered.
 * bounding box annotation in training data
 * weakly-supervised or unsupervised visual object localization
 * unsupervised visual object discovery
+  
 ### Unsupervised Speech Processing
+ASR systems for now: expensive for supervision! -> reduce supervision is needed.  
+-> segmentation and clustering algorithms:  
+1. divide a collection of spoken utterances at the boundaries of phones or words
+2. group together segments which capture the same underlying unit.  
+  
+-> popular approaches:
+* dynamic time warping
+* Bayesian generative models of the speech signal
+
 ### Fusion of Vision and Language
+popular tasks:
+* image captioning
+* visual question answering
+* multimodal dialog
+* text-to-image generation
+  
+Most of them: representing natural language with text.  
+Rising: learn directly from the speech signal:
+* correspondences between images of objects and the outputs of a supervised phoneme recognizer
+* showed that semantic correspondences could be learned between images and speech waveforms
+* proved that linguistic units approximating phonemes and words can be implicitly learned by models
+* **This paper introduces "matchmap" NNs: get semantic alignments between acoustic frames and image pixels**
+
+
+## Spoken Captions Dataset
 ### Fusion of Vision and Sounds
