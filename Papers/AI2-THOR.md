@@ -58,7 +58,8 @@ suitable for navigation due to lack of actionable objects and an interaction API
 * HoME
 * House3D
 * MINOS
-* SceneNet RGBD  
+* SceneNet RGBD
+  
 **Furthermore, AI2-ThOR is integrated with a physics engine!**
 
 ## Concepts
@@ -73,11 +74,23 @@ a virtual room that an agent can navigate in and interact with.
 Actions fail if pre-conditions are not met.
 
 ### Object
-Categories:  
+#### Categories:  
 * static or movable.  
 * interactable or non-interactable.  
+  
+#### Interactable objects:
+* included in the metadata that server sends.
+* 87 categories of interactable objects.
+* each interactable object contains a number of variation.  
+* a **randomizer** that can be used to change the location of the objects.  
+* the variant of the object that is selected per scene is deterministic.  
 
+### Object Visibility
+**object visible** = in camera view + within a threshold of distance(default: 1 meter) from camera to the closest point of the object.  
+**object visibility != visibility in the image**.  
 
-
-
+## Architecture
+Two components:  
+* A set of scenes built within the Unity Game engine.  
+* a lightweight Python API that interacts with the game engine.  
 
