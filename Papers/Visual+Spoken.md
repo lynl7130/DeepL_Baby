@@ -85,4 +85,16 @@ Some focused on integrating other acoustic signals.
 Combining speech and ambient sounds -> opportunities!
 
 
-## Spoken Captions Dataset
+## Spoken Captions Dataset -- Places Audio Caption Dataset
+~200,000 recordings describing images from Places 205.  
+402,385 image/caption pairs for training + 1,000 pairs for validation.  
+ADE20k dataset + ASR: for localize objects and words.  
+Google ASR engine: in place of ground truth.  
+
+## Models
+![](https://latex.codecogs.com/gif.latex?I_j): the output of the image branch of the network for the jth image.  
+![](https://latex.codecogs.com/gif.latex?A_j): the output of the audio branch for the jth caption.  
+![](https://latex.codecogs.com/gif.latex?S%28I%2C%20A%29): the similarity score between an image I and audio caption A.  
+![](https://latex.codecogs.com/gif.latex?I_j%5E%7Bimp%7D): the jth randomly chosen imposter image.  
+![](https://latex.codecogs.com/gif.latex?A_j%5E%7Bimp%7D): the jth randomly chosen imposter audio.  
+![](https://latex.codecogs.com/gif.latex?%5Ceta): a margin hyperparameter.  
