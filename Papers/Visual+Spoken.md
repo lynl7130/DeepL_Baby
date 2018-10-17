@@ -92,10 +92,12 @@ ADE20k dataset + ASR: for localize objects and words.
 Google ASR engine: in place of ground truth.  
 
 ## Models
-[Two-branch "matchmap" Netword](https://arxiv.org/pdf/1804.01452.pdf#page=4)
+[Two-branch "matchmap" Network](https://arxiv.org/pdf/1804.01452.pdf#page=6)
 ![](https://latex.codecogs.com/gif.latex?I_j): the output of the image branch of the network for the jth image.  
 ![](https://latex.codecogs.com/gif.latex?A_j): the output of the audio branch for the jth caption.  
 ![](https://latex.codecogs.com/gif.latex?S%28I%2C%20A%29): the similarity score between an image I and audio caption A.  
 ![](https://latex.codecogs.com/gif.latex?I_j%5E%7Bimp%7D): the jth randomly chosen imposter image.  
 ![](https://latex.codecogs.com/gif.latex?A_j%5E%7Bimp%7D): the jth randomly chosen imposter audio.  
 ![](https://latex.codecogs.com/gif.latex?%5Ceta): a margin hyperparameter.  
+### Loss function:
+![](https://latex.codecogs.com/gif.latex?%5Cbegin%7Bmatrix%7D%20L%20%3D%20%5Csum_%7Bj%3D1%7D%5EB%28max%28S%28I_j%2C%20A_j%5E%7Bimp%7D%29%20-%20S%28I_j%2C%20A_j%29&plus;%5Ceta%29%20%5C%5C%20&plus;max%280%2C%20S%28I_j%5E%7Bimp%7D%2C%20A_j%29%20-%20S%28I_j%2C%20A_j%29&plus;%5Ceta%29%29%20%5Cend%7Bmatrix%7D)  
