@@ -107,6 +107,35 @@ Different from prior work by learning representations that are distributed both 
 Our models are trained to optimize a ranking-based cirterion, such that images and captions that belong together are more similar in the embedding space than mismatched image/caption pairs.  
   
 ### Image Modeling
-new in VGG16 network.  
+##### Preprocessing:
+1. resizing the smallest dimension to 256 pixels
+2. taking a random 224x224 crop(the center crop is taken for validation)
+3. normalizing the pixels according to a global mean and variance
+
+#### New in VGG16 network:  
 * do not require pre-training
-* 
+* fc layer -> lose associations between any neuron above conv5 and the spatially localized stimulus which was responsible for its output -> **do not include fc layers!**
+* apply a 3x3, 1024 channel conv layer(no nonlinearity!) to the final 14x14, 512 channel feature map
+
+### Audio Caption Modeling
+output a feature map across the audio during training.  
+
+### Joining the Image and Audio Branches
+![](https://latex.codecogs.com/gif.latex?I): output feature map of the image network branch.  
+![](https://latex.codecogs.com/gif.latex?A): output feature map of the audio network branch.  
+![](https://latex.codecogs.com/gif.latex?I%5Ep): globally average-pooled I.  
+![](https://latex.codecogs.com/gif.latex?A%5Ep): globally average-pooled A.  
+**"matchmap" tensor** between an image and an audio caption:  
+![](https://latex.codecogs.com/gif.latex?M_%7Br%2Cc%2Ct%7D%20%3D%20I_%7Br%2Cc%2C%3A%7D%5ETA_%7Bt%2C%3A%7D)  
+
+#### SISA
+The average similarity between all audio frames and all image regions:  
+![](https://latex.codecogs.com/gif.latex?SISA%28M%29%20%3D%20%5Cfrac%7B1%7D%7BN_rN_cN_t%7D%5Csum_%7Br%3D1%7D%5E%7BN_r%7D%5Csum_%7Bc%3D1%7D%5E%7BN_c%7D%5Csum_%7Bt%3D1%7D%5E%7BN_t%7DM_%7Br%2Cc%2Ct%7D)  
+
+#### MISA
+matches each frame of the caption with the most similar image patch, then averages over the caption frames:  
+![](https://latex.codecogs.com/gif.latex?MISA%28M%29%20%3D%20%5Cfrac%7B1%7D%7BN_t%7D%5Csum_%7Bt%3D1%7D%5E%7BN_t%7Dmax_%7Br%2Cc%7D%28M_%7Br%2Cc%2Ct%7D%29)
+
+#### SIMA
+matches each image region with only the audio frame with the highest similarity to that region:
+![](https://latex.codecogs.com/gif.latex?SIMA%28M%29%20%3D%20%5Cfrac%7B1%7D%7BN_rN_c%7D%5Csum_%7Br%3D1%7D%5E%7BN_r%7D%5Csum_%7Bc%3D1%7D%5E%7BN_c%7Dmax_t%28M_%7Br%2Cc%2Ct%7D%29)
