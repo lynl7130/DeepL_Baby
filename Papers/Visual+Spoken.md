@@ -139,3 +139,9 @@ matches each frame of the caption with the most similar image patch, then averag
 #### SIMA
 matches each image region with only the audio frame with the highest similarity to that region:
 ![](https://latex.codecogs.com/gif.latex?SIMA%28M%29%20%3D%20%5Cfrac%7B1%7D%7BN_rN_c%7D%5Csum_%7Br%3D1%7D%5E%7BN_r%7D%5Csum_%7Bc%3D1%7D%5E%7BN_c%7Dmax_t%28M_%7Br%2Cc%2Ct%7D%29)
+
+## Experiments
+### Image and Caption Retrieval
+[Details](https://arxiv.org/pdf/1804.01452.pdf#page=8)
+#### why this task?
+Demonstrate how well the model has learned to semantically bridge the audio and visual modalities?
