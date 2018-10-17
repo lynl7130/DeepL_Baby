@@ -1,1 +1,15 @@
 #  Very deep convolutional networks for large-scale image recognition
+
+[paper](https://arxiv.org/pdf/1409.1556.pdf)
+
+## Summary
+Investigate the effect of CNN depth on accuray in large-scale image recognition setting.
+
+## Introduction
+ConvNets have recently enjoyed a great success in large-scale image and video recognition.  
+A number of attempts to improve orginial ConvNet:
+* smaller receptive window size and smaller stride of the first conv layer.  
+* training and testing the networks densely over the whole image and over multiple scales.  
+* **this paper**: adding more conv layers(3x3 filters)
+
+## [ConvNet configurations](https://arxiv.org/pdf/1409.1556.pdf#page=3)
