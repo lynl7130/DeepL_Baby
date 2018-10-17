@@ -141,7 +141,18 @@ matches each image region with only the audio frame with the highest similarity 
 ![](https://latex.codecogs.com/gif.latex?SIMA%28M%29%20%3D%20%5Cfrac%7B1%7D%7BN_rN_c%7D%5Csum_%7Br%3D1%7D%5E%7BN_r%7D%5Csum_%7Bc%3D1%7D%5E%7BN_c%7Dmax_t%28M_%7Br%2Cc%2Ct%7D%29)
 
 ## Experiments
-### Image and Caption Retrieval
 [Details](https://arxiv.org/pdf/1804.01452.pdf#page=8)
+### Image and Caption Retrieval
+[Recall Score Table](https://arxiv.org/pdf/1804.01452.pdf#page=9)
 #### why this task?
 Demonstrate how well the model has learned to semantically bridge the audio and visual modalities?
+
+### Speech-Prompted Object Localization
+Associate each matchmap cell with a specific visual object label(by ADE20k dataset) as well as a word label(by time-aligned transcription).
+#### How to do the localization?
+1. Given a word beginning at time t1 and ending at time t2, derive a heatmap across the image by summing the matchmap between t1 and t2
+2. normalize the heatmap to sit within the interval (0,1)
+3. threshold the heatmap
+4. evaluate IoU of the detection mask with ADE20k label mask for whatever object was referenced by the word
+
+## under construction
