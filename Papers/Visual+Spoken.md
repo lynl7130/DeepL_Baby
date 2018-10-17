@@ -92,6 +92,7 @@ ADE20k dataset + ASR: for localize objects and words.
 Google ASR engine: in place of ground truth.  
 
 ## Models
+[Two-branch "matchmap" Netword](https://arxiv.org/pdf/1804.01452.pdf#page=4)
 ![](https://latex.codecogs.com/gif.latex?I_j): the output of the image branch of the network for the jth image.  
 ![](https://latex.codecogs.com/gif.latex?A_j): the output of the audio branch for the jth caption.  
 ![](https://latex.codecogs.com/gif.latex?S%28I%2C%20A%29): the similarity score between an image I and audio caption A.  
