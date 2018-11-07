@@ -40,8 +40,12 @@ Improve the detection or recognition quality by exploiting temporal information,
 -> model the motion during learning.   
 
 ### FGFA: end-to-end!
+[FGFA pipeline](http://openaccess.thecvf.com/content_ICCV_2017/papers/Zhu_Flow-Guided_Feature_Aggregation_ICCV_2017_paper.pdf#page=2)
 1. **feature extraction network**: individual frames -> per-frame feature maps.  
 2. **optical flow network**: estimate motion between nearby frames and the reference frame.  
 3. **feature warping**: warp nearby feature maps to the reference frame according to the flow motion.  
 4. **feature aggregation**: adaptive weighting network: aggregate the warped feature maps.  
 5. **detection network**: aggregated feature maps -> detection result on the reference frame.  
+  
+* box-level methods could refine FGFA!
+* FGFA works well for fast-moving objects by making use of varied snapshots of these objects!
