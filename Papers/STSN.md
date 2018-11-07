@@ -5,7 +5,7 @@
 
 ## Summary
 STSN(Spatiotemporal Sampling Network):  
-* learing to spatially sample features from adjacent frames
+* learning to spatially sample features from adjacent frames
 * optimizes sampling locations directly with respect to object detection performance
 * best perform on ImageNet VID
 * does not require optical flow data for training(prior work)
