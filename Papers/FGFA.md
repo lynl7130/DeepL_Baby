@@ -31,5 +31,16 @@ Box level methods: exploit temporal information in videos(multiple "snapshots").
 * post-processing step relies on motion estimation(optical flow) and bounding box association rules(object tracking).  
 * Improve performance by heuristic post-processing, not by principled learning!  
 
+### A principle way: end-to-end learning
+Improve the detection or recognition quality by exploiting temporal information, in a principled way.  
+1. feature matters.  
+-> improve the per-frame feature learning by temporal aggregation.  
+2. the features of the same object instance are usually not spatially aligned across frames due to video motion.  
+-> model the motion during learning.   
 
-
+### FGFA: end-to-end!
+1. **feature extraction network**: individual frames -> per-frame feature maps.  
+2. **optical flow network**: estimate motion between nearby frames and the reference frame.  
+3. **feature warping**: warp nearby feature maps to the reference frame according to the flow motion.  
+4. **feature aggregation**: adaptive weighting network: aggregate the warped feature maps.  
+5. **detection network**: aggregated feature maps -> detection result on the reference frame.  
