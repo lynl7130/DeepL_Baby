@@ -30,6 +30,7 @@ Box level methods: exploit temporal information in videos(multiple "snapshots").
 2. assemble the detected bounding boxes across temporal dimension in a dedicated post-processing step.  
 * post-processing step relies on motion estimation(optical flow) and bounding box association rules(object tracking).  
 * Improve performance by heuristic post-processing, not by principled learning!  
+[Note for these methods](https://github.com/lynl7130/DeepL_Baby/tree/master/Papers/Box_Level_Methods)
 
 ### A principle way: end-to-end learning
 Improve the detection or recognition quality by exploiting temporal information, in a principled way.  
