@@ -29,4 +29,7 @@ GoogLeNet = 22-layer repeated Inception layers
 * remove computational bottlenecks -> larger depth&width available
 
 ### R-CNN
-Regions with Convolutional Neural Networks: The current leading approach for object detection
+Regions with Convolutional Neural Networks: The current leading approach for object detection.  
+#### R-CNN: detection problem -> 2 subproblems
+1. utilize low-level cues for potential object proposals.  
+2. use CNN classifiers to identify object categories at these locations.  
