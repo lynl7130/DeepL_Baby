@@ -9,3 +9,13 @@ an accurate and end-to-end learning framework for video object detection.
 * temporal coherence on feature level
 * aggregate nearby features along the motion paths
 * single-frame baselines in ImageNet VID
+
+## Introduction
+
+### State-of-art object detection method in still images
+a two-stage structure:  
+* deep CNN: generate a set of feature maps over the whole input
+* shallow detection-specific network: generate results from feature maps
+
+### Why this won't work on videos?
+
