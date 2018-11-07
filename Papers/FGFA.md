@@ -49,3 +49,5 @@ Improve the detection or recognition quality by exploiting temporal information,
   
 * box-level methods could refine FGFA!
 * FGFA works well for fast-moving objects by making use of varied snapshots of these objects!
+
+## Related Work
