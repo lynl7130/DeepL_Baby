@@ -1,6 +1,6 @@
 # Unsupervised Learning of Spoken Language with Visual Context
 
-[paper](https://papers.nips.cc/paper/6186-unsupervised-learning-of-spoken-language-with-visual-context.pdf)
+[NIPS 2016 Paper](https://papers.nips.cc/paper/6186-unsupervised-learning-of-spoken-language-with-visual-context.pdf)
 
 ## Summary
 * contextually relevant visual images + untranscribed audio training data -> spoken language acquisition.  
