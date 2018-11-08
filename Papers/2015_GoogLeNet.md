@@ -33,3 +33,6 @@ Regions with Convolutional Neural Networks: The current leading approach for obj
 #### R-CNN: detection problem -> 2 subproblems
 1. utilize low-level cues for potential object proposals.  
 2. use CNN classifiers to identify object categories at these locations.  
+#### We did sth on R-CNN's 2 steps!
+1. a multi-box prediction for higher object bounding box recall.  
+2. ensemble approaches for better categorization of bounding box proposals.  
