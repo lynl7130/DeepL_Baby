@@ -1,5 +1,5 @@
 # Jointly Discovering Visual Objects and Spoken Words from Raw Sensory Input
-[paper](https://arxiv.org/pdf/1804.01452.pdf)
+[ECCV 2018 Paper](https://arxiv.org/pdf/1804.01452.pdf)
 
 ## Summary
 * **Associate**: segments of spoken audio captions + semantically relevant portions of images
