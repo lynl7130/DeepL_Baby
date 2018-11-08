@@ -1,5 +1,5 @@
 # Learning Deep Features for Scene Recognition using Places Database
-[paper](http://places.csail.mit.edu/places_NIPS14.pdf)
+[NIPS 2014 Paper](http://places.csail.mit.edu/places_NIPS14.pdf)
 
 ## Summary
 * Places: a scene-centric database(while ImageNet: a database for object recognition)
