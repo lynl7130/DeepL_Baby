@@ -62,10 +62,24 @@ Explores the suitability of off-the-shelf and fine-tuned features from an object
 Use features from pre-trained image classification CNNs for instance search.  
 * demonstrated the suitability of features from fc layers for image retrieval
 * someone improved the result by combining fc layers extracted from different image sub-patches
+
 #### Second generation
 Explore the usage of other layers in the pretrained CNN 
 * found that conv layers >> fc layers at image retrieval tasks
 * someone proposed a compact descriptor composed of the sum of the activations of each of the filter responses in a conv layer
 * someone introduced R-MAC: a compact descriptor composed of the aggregation of multiple region features.  
+* someone improved by applying non-parametric spatial and channel-wise weighting strategies to the conv layers
+
+#### In this work
+* similar to former: use conv features of a pretrained CNN
+* use a state-of-art object detection CNN to extract both image- and region-based conv features in a single forward pass
+
 
 ### Object Detection CNNs
+#### R-CNN
+instead of full images, the regions of an object proposal alg are used as inputs to the network.  
+At test time, fc layers for all windows were extracted and used to train a bounding box regressor and classifier.  
+* someone proposed SPP-net:  
+1. used a Spatial Pyramid based pooling layer to improve classification and detection performance.  
+2. significantly decreased computational time by pooling region features from conv features instead of forward passing each region crop through all layers in the CNN
+* 
