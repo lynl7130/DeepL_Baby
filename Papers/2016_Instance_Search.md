@@ -79,7 +79,40 @@ Explore the usage of other layers in the pretrained CNN
 #### R-CNN
 instead of full images, the regions of an object proposal alg are used as inputs to the network.  
 At test time, fc layers for all windows were extracted and used to train a bounding box regressor and classifier.  
-* someone proposed SPP-net:  
-1. used a Spatial Pyramid based pooling layer to improve classification and detection performance.  
-2. significantly decreased computational time by pooling region features from conv features instead of forward passing each region crop through all layers in the CNN
-* 
+
+#### Improvement to R-CNN: SPP-net
+* used a Spatial Pyramid based pooling layer to improve classification and detection performance.  
+* significantly decreased computational time by pooling region features from conv features instead of forward passing each region crop through all layers in the CNN
+#### Improvement to R-CNN: Fast R-CNN
+* used the speed strategy as SPP-net
+* replaced the post-hoc training of SVM classifiers and box regressors with an end-to-end training solution
+#### Improvement to R-CNN: Faster R-CNN
+* removed the object proposal dependency by introducing a Region Proposal Network(RPN)
+* RPN shares features with the object detection network to simultaneously learn prominent object proposals and their associated class probabilities
+
+#### In this work
+* take advantage of the end-to-end self-contained object detection architecture of Faster R-CNN
+* extract both image and region features for instance search
+
+## Methodology
+
+### CNN-based Representations
+This paper: features from object detection CNN -> instance search
+
+#### Faster R-CNN
+Two branches that share conv layers:  
+* a Region Proposal Network: learns a set of window locations
+* a classifier: learns to label each window as one of the classes in the training set
+
+#### Image-wise pooling of activations(IPA)
+In order to construct a global image descriptor from Faster R-CNN layer activations
+
+#### Region-wise pooling of activations(RPA)
+
+### Fine-tuning Faster R-CNN
+
+### Image Retrieval
+
+
+
+
