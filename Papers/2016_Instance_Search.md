@@ -104,15 +104,69 @@ Two branches that share conv layers:
 * a Region Proposal Network: learns a set of window locations
 * a classifier: learns to label each window as one of the classes in the training set
 
-#### Image-wise pooling of activations(IPA)
-In order to construct a global image descriptor from Faster R-CNN layer activations
+#### Image-wise pooling of activations(IPA)=image-wise descripters
+* IPA: The activations of a conv layer -> a global image descriptor of the same dimension as the number of filters in the conv layer
+* max/sum pooling strategies are compared 
 
-#### Region-wise pooling of activations(RPA)
+#### Region-wise pooling of activations(RPA)=region-wise descriptors
+* Faster R-CNN's region pooling layer: extracts the conv activations for each of the object proposals learned by the RPN
+* give raise to the region-wise descriptors
+* max/sum pooling strategies are compared
+
+#### max pooling
+max-pooled features:  
+1. l_2-normalizing.  
+  
+#### sum pooling
+sum-pooled features:  
+1. l_2-normalizing.  
+2. whitening.  
+3. l_2-normalizing.  
 
 ### Fine-tuning Faster R-CNN
+#### Why fine-tune?
+Want a fine-tuned Faster R-CNN to:  
+* obtain better feature representations for image retrieval
+* improve the performance of spatial analysis and reranking
+
+#### What to do?
+Fine tune to detect the query obejcts to be retrieved by our system.  
+
+#### How did we do this?
+Modify the architecture of Faster R-CNN to output the regressed bounding box coordinates and the class scores for each one of the query instances of the tested datasets.  
+
+#### Two modalities of fine-tuning
+* Fine-tuning Strategy #1:  
+Only the weights of the fc layers in the classification branch are updated. 
+* Fine-tuning Strategy #2:  
+Weights of all layers after the first two conv layers are updated.  
+
 
 ### Image Retrieval
+The three stages of the proposed instance retrieval pipeline.  
+#### 1. Filtering Stage
+* In this stage, the whole image is considered as the query
+* IPA: build image descriptors for both query and database images
+* At test time, the descriptor of the query image is compared to all elements in the database, which are then ranked based on the cosine similarity.  
 
+#### 2. Spatial Reranking
+The top N elements are locally analyzed and reranked.  
+
+#### Class-Agnostic Spatial Reranking(CA-SR)
+For every image in the top N ranking, the RPA for all RPN proposals are compared to the region descriptor of the query bounding box.  
+* Obtain the region-wise descriptor of the query object:  
+Warp its bounding box to the size of the feature maps in the last conv layer and pool the activations within this area.  
+* The region with the maximum cosine similarity for every image in the N images gives the object localization, and its score is kept for ranking.  
+
+#### Class-Specific Spatial Reranking(CS-SR)
+Using a network that has been fine-tuned with the instances to retrieve.  
+* use the direct classificatoin scores for each RPN proposal as the similarity score to the query object.  
+* the region with maximum score is kept for visualization, used to rank the image list.  
+
+#### 3. Query Expasion(QE)
+The image descriptors of the top M elements of the ranking are averaged together with the query descriptor to perform a new search.  
+
+### Experiments
 
 
 
