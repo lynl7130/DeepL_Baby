@@ -166,7 +166,107 @@ Using a network that has been fine-tuned with the instances to retrieve.
 #### 3. Query Expasion(QE)
 The image descriptors of the top M elements of the ranking are averaged together with the query descriptor to perform a new search.  
 
-### Experiments
+## Experiments
+
+### Datasets
+Three datasets to assess the methodologies:
+#### Oxford Buildings
+* 5063 images
+* 55 query images of 11 different buildings in Oxford
+* 5 images/instance
+* a bounding box surrounding the target object is provided for query images
+#### Paris Buildings
+* 6142 images of Paris
+* 55 query images of 11 buildings with associated bounding box annotations
+#### INS 2013
+* a subset of 23,614 keyframes from TRECVid Instance Search(INS) dataset
+* only those keyframes that are relevant for at least one of the queries of INS 2013
+
+### Experimental Setup
+#### architecture choice for Faster R-CNN
+Tried both:  
+* VGG16
+* ZF
+#### build the image descriptors
+Use he last conv layer to build:
+* conv5 for ZF(descriptor dimension:256)
+* conv5.3 for VGG16(descriptor dimension:512)
+
+#### image rescaling
+* shortest side is 600 pixels
+
+#### GPU setting
+* Nvidia Titan GPU
 
 
+### Off-the-shelf Faster R-CNN features
+#### Compare the sum and max pooling of image- and region-wise descriptors
+* filtering stage: sum pooling > max pooling -> **set IPA-sum descriptors**
+* reranking stage: sum pooling < max pooling -> **set RPA-max descriptors**
+
+#### Special: spatial reranking not working in INS13!
+* Qualitativey evaluate the two pooling strategies:  
+Top rankings of INS13 queries, spatially reranked with region-wise max and sum poolied descriptors.  
+* although mAP is similar, the object location  obtained with max pooling is more accurate!  
+
+#### Network Choice
+* ZF and VGG16(Faster R-CNN) trained on Pascal VOC and COCO
+* features pooled from the deeper VGG16 is better
+
+#### Effect of QE
+* QE: if applied, M=5
+* QE is significant! Reasonable, cuz spatial reranking worked in two Dset!
+* QE is useful following spatial reranking even in INS13! -> the images that fall on the very top of the ranking are more useful to expand the query than the ones in the top of the first ranking.  
+
+
+### Fine-tuning Faster R-CNN
+
+#### Network Choice
+VGG16 Faster R-CNN model, pretained with the objects of the Microsoft COCO dataset.  
+
+#### Modification to the Network
+modify the output layers in the network to return:  
+* 12 class probabilities:  
+1. 11 buildings in the dataset.  
+2. an extra class for the background.  
+* corresponding regressed bounding box coordinates
+
+#### Training data for Oxford and Paris: 11*5*2=110 images
+* 5 images provided for each one of the building and their bounding box locations
+* augment the set by horizontal flip
+
+#### Training data for INS13: 30*4*2=240 images
+* 30 different query instances
+* 4 images each
+* horizontal flip
+* output class: 30+1(background)
+
+#### iteration of fine-tuning: 5000
+* considering the small number of training examples
+
+#### training
+* approximate joint training strategy: trains the RPN and classifier branches at the same time by multi-task loss
+* train a separate network for each of the tested datasets using different fine-tuning modalities
+* time: 30, 45m for each strategy on Nvidia Titan X GPU
+
+#### finetuning strategies #1
+* only update parameters in fc layers.  
+* In INS13, performance did not improved after using CS-SR: only fine-tuning fc layers not sufficient to detect
+
+#### finetuning strategies #2
+* update params in last conv layer, fc layers, RPN proposals
+* After fine-tuning, more neurons in the conv layer reacts to query objects
+* fine-tuned features are already discriminant enough to retrieve objects in 2 datasets, but bad in INS3. 
+* complicated datasets benefit most from fine-tuned features and spatial reranking 
+
+#### ft#2>ft#1
+ft#2: feature and RPN layers to adapt to the query objects
+
+### Comparison with state-of-the-art
+#### Why somebody is doing better without reranking/qe?
+* the difference in CNN architecture: Faster R-CNN vs VGG16
+* training data: Pascal VOC vs ImageNet
+* input image size: 600px wide vs full resolution
+
+#### results obtained with fine-tuned features(strategy 2) is competitive!
 
